@@ -10,3 +10,24 @@ myImage.onclick = () => {
         myImage.setAttribute('alt', 'my image is firefox-icon.png');
     }
 }
+
+let myButton = document.querySelector('button');
+myButton.onclick = () => {
+    setUserName();
+}
+let myHeading = document.querySelector('h1');
+if (!localStorage.getItem('name')) {
+    setUserName();
+} else {
+    let storedName = localStorage.getItem('name');
+    myHeading.textContent = 'Mozilla is cool, by getting ' + storedName;
+}
+function setUserName() {
+    let myName = prompt('Please enter your name.');
+    if (!myName) {
+        setUserName();
+    } else {
+        localStorage.setItem('name', myName);
+        myHeading.textContent = 'Mozilla is cool, ' + myName;
+    }
+}
