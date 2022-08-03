@@ -1,6 +1,6 @@
 let myImage = document.querySelector('img');
 myImage.setAttribute('alt','initial image');
-myImage.onclick = function() {
+myImage.onclick = () => {
     let mySrc = myImage.getAttribute('src');
     if (mySrc === 'images/firefox-icon.png') {
         myImage.setAttribute('src','images/firefox2.png');
