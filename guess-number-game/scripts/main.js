@@ -1,24 +1,21 @@
 let randomNumber = Math.floor(Math.random() * 100) + 1;
-// console.log(randomNumber);
+console.log(randomNumber);
 const guesses = document.querySelector('.guesses');
-// console.log(guesses);
 const lastResult = document.querySelector('.lastResult');
-// console.log(lastResult);
 const lowOrHi = document.querySelector('.lowOrHi');
-// console.log(lowOrHi);
 const guessSubmit = document.querySelector('.guessSubmit');
-// console.log(guessSubmit);
 const guessField = document.querySelector('.guessField');
-// console.log(guessField);
 let guessCount = 1;
-// console.log(guessCount);
 let resetButton;
+
 function checkGuess() {
     const userGuess = Number(guessField.value);
     if (guessCount === 1) {
         guesses.textContent = 'Previous guesses: ';
     }
+
     guesses.textContent += userGuess + ' ';
+
     if (userGuess === randomNumber) {
         lastResult.textContent = 'Congratulations! You got it right!';
         lastResult.style.backgroundColor = 'green';
@@ -30,8 +27,8 @@ function checkGuess() {
         setGameOver();
     } else {
         lastResult.textContent = 'Wrong!';
-        lastResult.style.backgroundColor = 'red';
 
+        lastResult.style.backgroundColor = 'red';
         if (userGuess < randomNumber) {
             lowOrHi.textContent = 'Last guess was too low!';
         } else if (userGuess > randomNumber) {
@@ -39,10 +36,10 @@ function checkGuess() {
         }
     }
     guessCount++;
-    // console.log(guessCount);
 
     guessField.value = '';
     guessField.focus();
+
 }
 guessSubmit.addEventListener('click', checkGuess);
 
@@ -58,10 +55,11 @@ function setGameOver() {
 
 function resetGame() {
     guessCount = 1;
-    const resultParas = document.querySelectorAll('.resultParas');
+    const resultParas = document.querySelectorAll('.resultParas p');
     for (const resultPara of resultParas) {
         resultPara.textContent = '';
     }
+    resetButton.parentNode.removeChild(resetButton);
     guessField.disabled = false;
     guessSubmit.disabled = false;
     guessField.value = '';
