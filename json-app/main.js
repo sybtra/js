@@ -64,6 +64,7 @@ function populateHeroes(obj) {
     }
 }
 populate();
+
 const section = document.querySelector('section');
 
 let para1 = document.createElement('p');
